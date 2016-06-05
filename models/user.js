@@ -1,7 +1,7 @@
 'use strict';
 const db = require('../lib/db');
-const crypto = require('crypto');
 const Sequelize = require('sequelize');
+const validatePassword = require('../lib/validate-password');
 
 const User = db.define('user', {
   role_id: Sequelize.INTEGER,
@@ -28,11 +28,7 @@ const User = db.define('user', {
   tableName: 'bf_users',
   instanceMethods: {
     validPassword: function(pass) {
-      const hash = crypto.createHash('sha1');
-      hash.update(this.salt+pass);
-      const result = hash.digest('hex');
-      console.log(result);
-      return result === this.password_hash;
+      return validatePassword(this, pass);
     }
   }
 });
