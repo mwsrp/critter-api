@@ -8,7 +8,7 @@
     "start": "forever start server.js",
     "stop": "forever stop server.js || echo '[warn] tried to stop app but it was not running'"
   },
-  "author": "",
+  "author": "MWSRP <info@maldiveswhalesharkresearch.org>",
   "license": "GPL-3.0",
   "dependencies": {
     "body-parser": "^1.15.1",
